@@ -35,11 +35,11 @@ public static class Arrays
         // If the amount if bigger than the size of the list, we adjust it.
         amount = amount % data.Count;
 
-        // We divide teh list in two parts
+        // We divide the list in two parts
         List<int> lastPart = data.GetRange(data.Count - amount, amount);
         List<int> firstPart = data.GetRange(0, data.Count - amount);
         
-        // We clean the list and then add the two part in rotated order
+        // We clean the list and then add the two parts in rotated order
         data.Clear();
         data.AddRange(lastPart);
         data.AddRange(firstPart);
