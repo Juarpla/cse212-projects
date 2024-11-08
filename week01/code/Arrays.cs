@@ -1,3 +1,5 @@
+using System.Security.Principal;
+
 public static class Arrays
 {
     /// <summary>
@@ -8,12 +10,17 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create a array variable to storage the result that it will be return
+        double[] result = new double[length];
+        // Start a loop the increment the index while the multiple was adding
+        for (int i = 0; i < length; i++)
+        {
+            // Add multiple according to the numeric sequence 
+            result[i] = number * (i + 1);
+        }
 
-        return []; // replace this return statement with your own
+        // return the final result of the multiples function 
+        return result;
     }
 
     /// <summary>
@@ -25,9 +32,16 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // If the amount if bigger than the size of the list, we adjust it.
+        amount = amount % data.Count;
+
+        // We divide teh list in two parts
+        List<int> lastPart = data.GetRange(data.Count - amount, amount);
+        List<int> firstPart = data.GetRange(0, data.Count - amount);
+        
+        // We clean the list and then add the two part in rotated order
+        data.Clear();
+        data.AddRange(lastPart);
+        data.AddRange(firstPart);
     }
 }
